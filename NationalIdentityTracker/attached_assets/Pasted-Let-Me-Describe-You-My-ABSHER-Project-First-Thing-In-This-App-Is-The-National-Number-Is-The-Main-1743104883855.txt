@@ -1,0 +1,98 @@
+Let Me Describe You My ABSHER Project, 
+First Thing In This App Is The National Number, Is The Main Key.
+In The Login Page I Login With National Number.
+1- HOME SCREEN With Welcome Message To User And Navigation Bar With 5 Icons Navigates User For(1-Services Screen. 2-Home Screen. 3-Settings 4-Notification. 5-Docs)
+In The Home Screen There Quick View For Documents.
+2-SERVICES SCREEN Makes User To Apply For Its Services(Apply For Passport Execution, ID Card Renewal For Eg) With Menu To Select Service Type, And Appointment Place(Menu To Select Governmental Office To Receive Their Services), And The User Enters The Invoice Number As Payment, And  Confirm Button. 
+3-SETTINGS SCREEN (EDIT PROFILE button navigates user to another screen to make him change his information) and Just Languages And Dark/Light Modes And Faqs And Contact The Support Team 
+4-NOTIFICATION SCREEN  Enables User To Track Their Applications.
+5-DOCS SCREEN enables User to view their official Docs 
+
+
+1. Login Page - AI Prompt
+Prompt:
+Create a detailed Login Page for a Responsive React Website (PC, MOBILE AND TABLET VIEW) that uses the backend. This page must allow users to log in using their National Number as the primary key and ensure secure authentication.
+
+Frontend Requirements (React)
+The Login Screen should have a clean UI with the app logo, a welcome message, and a national theme.
+The login form should include:
+National Number Field (Text input, required, only Two chars and 10 numbers, validated).
+Password Field (Text input, required, must have eye icon for visibility toggle).
+A "Forgot Password?" link that navigates to the password reset page.
+A Login Button that stays disabled until valid input is provided.
+Loading Indicator while processing authentication.
+Error Handling: Show toast/snackbar messages if login fails (e.g., "Invalid National Number or Password").
+Navigation:
+On successful login, redirect to the Home Screen.
+If the user has not completed profile setup or suddenly Singed Up Generate for him a National Number, redirect to Edit Profile Page, AND PROFILE PICTURE CAPTURE IN LIVE (in the signing up). 
+Backend Requirements :
+Implement POST /api/auth/login, accepting national_number and password.
+Verify credentials using a PostgreSQL
+Use JWT-based authentication with access/refresh tokens.
+Passwords must be hashed using bcrypt.
+Implement rate-limiting and account lockout after multiple failed attempts.
+2. Home Screen :
+Create a Responsive React Website (PC, MOBILE AND TABLET VIEW) detailed Home Screen for a Governmental Website that serves as the main hub for users. This screen must include a welcome message, a navigation bar, and a Dynamic view of applied official documents.
+
+Frontend Requirements (React)
+Display a welcome message with the user's full name.
+Quick View Section displaying small previews of official documents (e.g., Passport, ID Card).
+A bottom navigation bar with 5 icons:
+Home (Current screen)
+Services (Navigates to Services Screen)
+Settings (Navigates to Settings Screen)
+Notifications (Navigates to Notifications Screen)
+Docs (Navigates to Docs Screen)
+Ensure the UI supports light and dark mode.
+Backend Requirements :
+Implement GET /api/user/{national_number} to fetch user data and documents.
+Ensure real-time updates if a document is updated.
+3. Services Screen :
+Create a Responsive React Website (PC, MOBILE AND TABLET VIEW) detailed Services Screen that allows users to apply for various governmental services.
+
+Frontend Requirements (React)
+Display a dropdown menu listing available services (e.g., Passport Execution, ID Card Renewal, / New execution and renewal for every service type).
+A menu to select the appointment place (Governmental Office "an office named by every Sudanese State").
+A text input field for users to enter their invoice number (for payment confirmation).
+A Confirm Button to submit the application.
+And emergence Option (e.g., Travel, or any critical things)
+And The User confirming his Information(Name, National number)
+Show a loading indicator while processing.
+Navigation:
+After successful application, show a success message and redirect to Notifications Screen.
+Backend Requirements :
+Implement GET /api/services to fetch available services.
+Implement POST /api/services/apply, accepting:
+national_number, selected_service, office_location, invoice_number.
+Validate the invoice number with the government payment system.
+4. Settings Screen :
+Create a Responsive React Website (PC, MOBILE AND TABLET VIEW) Settings Screen where users can manage their account preferences.
+
+Frontend Requirements (React)
+Display:
+Edit Profile Button (Navigates to Edit Profile Page, User Can only edit his Phone number by him self and for other information he must contact the Customer Services).
+Language Selection (Dropdown) (Arabic, English.).
+Dark/Light Mode Toggle Switch.
+FAQs Section (Expandable cards with common questions).
+Contact Support Button.
+Backend Requirements :
+Implement PUT /api/user/settings/{national_number} to update preferences.
+5. Notification Screen :
+Create a Responsive React Website (PC, MOBILE AND TABLET VIEW) Notifications Screen that allows users to track their application status.
+If the Admin applied the app, the Application will appear in Docs page as an Official Document.
+Frontend Requirements (React)
+Display a list of notifications, including:
+Status updates for applied services by admin (Pending, Approved, Rejected (The rejection reason)).
+Backend Requirements :
+Implement GET /api/notifications/{national_number}.
+6. Docs Screen (Digital Wallet):
+Create a Responsive React Website (PC, MOBILE AND TABLET VIEW) Docs Screen that allows users to view and Keep their official documents.
+
+Frontend Requirements (React)
+Display a list of official documents (e.g., Passport, ID Card).
+Clicking on a document opens a detailed view with all relevant information With Unique QR Code if scanned will direct the scanner to simple document Form.
+Provide an option to download or share the document.
+Backend Requirements :
+Implement GET /api/user/docs/{national_number} to fetch documents.
+
+"	AND CREATE DETAILED md FILE FOR LOCAL SETUP
